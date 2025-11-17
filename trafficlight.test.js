@@ -19,4 +19,9 @@ describe('test suite traffic light', () => {
             .toBe("ATTENTION!");
     })
 
+    it(`case no light`, () => {
+        expect(app.trafficLight(undefined))
+            .toBe("OUT OF ORDER");
+    });
+
 });
