@@ -1,4 +1,4 @@
-pipeline{
+pipeline {
     agent any
 
     tools {
@@ -26,7 +26,20 @@ pipeline{
         }
         stage('Test'){
             steps{
-                sh 'npm test'
+                script {
+                    // This block starts the app, waits for it, runs tests, and ensures the app stops
+                    sh '''
+                        node index.js &
+
+                        APP_PID=$!
+
+                        sleep 5
+
+                        npm test || (kill $APP_PID && exit 1)
+
+                        kill $APP_PID
+                    '''
+                }
             }
         }
     }
