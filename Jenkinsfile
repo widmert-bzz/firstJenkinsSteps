@@ -14,11 +14,6 @@ pipeline {
                 }
             }
         }
-        stage('Install Jest'){
-            steps{
-                sh 'npm i jest-cli -g'
-            }
-        }
         stage('Install Dependencies'){
             steps{
                 sh 'npm i'
