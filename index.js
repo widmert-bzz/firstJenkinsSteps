@@ -18,5 +18,5 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //import api
-require('../M324ap_Code/03/03_Solutions/03/backend/api.trafficlight')(app);
+require('api.trafficlight.js')(app);
 
